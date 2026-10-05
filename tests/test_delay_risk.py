@@ -37,16 +37,16 @@ class TestTrainDelayRiskModel:
         assert "majority_class_baseline_accuracy" in metrics
 
     def test_roc_auc_beats_random_chance(self, shipment_df):
-        """The honest, threshold-independent signal check: ROC-AUC of
+        """The threshold-independent signal check: ROC-AUC of
         0.5 means no better than random. This model should show real,
         if modest, discriminative power -- see README for the full
-        honest discussion of accuracy vs. ROC-AUC on this task.
+        discussion of accuracy vs. ROC-AUC on this task.
         """
         _, metrics, _ = train_delay_risk_model(shipment_df)
         assert metrics["roc_auc"] > 0.55
 
     def test_class_balanced_model_has_meaningfully_better_recall_than_unbalanced(self, shipment_df):
-        """Regression test for the honest finding in README: an
+        """Regression test for the class-imbalance finding in README: an
         unbalanced RandomForestClassifier mostly just predicts the
         majority class (on-time) and has poor recall on actually-late
         shipments. This test confirms the balanced model (the one this

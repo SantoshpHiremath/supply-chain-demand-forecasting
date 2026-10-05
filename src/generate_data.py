@@ -6,10 +6,8 @@ something real to learn from, including deliberately injected realistic
 structure (seasonality, trend, supplier-specific delay risk) rather than
 pure noise.
 
-Not real BMW or any company's data. Modeled on the domain BMW's
-"Praktikant Data and AI Engineering Supply Chain" posting describes:
-material ordering at scale, supply-chain risk assessment, and logistics
-optimization.
+Synthetic data. Modeled on the domain of material ordering at scale,
+supply-chain risk assessment, and logistics optimization.
 """
 from __future__ import annotations
 

@@ -1,7 +1,7 @@
 """
 End-to-end demo: generates data, trains the demand forecaster and the
 delay-risk classifier, and produces a logistics recommendation (safety
-stock / reorder point) for every part, printing an honest summary
+stock / reorder point) for every part, printing a summary
 including the naive-baseline comparison and the delay-risk metrics.
 """
 import os
@@ -30,7 +30,7 @@ def main():
     wins = (forecast_results["improvement_over_naive_pct"] > 0).sum()
     print(f"\nAverage improvement over naive baseline: {avg_improvement:.1f}%")
     print(f"Parts where the blended model beats naive: {wins}/{len(forecast_results)}")
-    print("(See README 'Honest finding' section for why this is modest, not dramatic.)")
+    print("(See README 'Results' section for the forecasting evaluation details.)")
 
     print("\n" + "=" * 70)
     print("2. DELIVERY DELAY-RISK CLASSIFICATION")

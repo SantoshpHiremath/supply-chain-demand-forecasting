@@ -55,8 +55,8 @@ def train_delay_risk_model(shipment_df: pd.DataFrame, test_size: float = 0.25, s
     y_proba = pipeline.predict_proba(X_test)[:, list(pipeline.named_steps["classifier"].classes_).index(True)]
     majority_baseline_acc = max(y_test.mean(), 1 - y_test.mean())
 
-    # Accuracy alone is a misleading metric here -- see README's "Honest
-    # finding" section: the class-balanced model trades some raw accuracy
+    # Accuracy alone is a misleading metric here -- see README's "Results"
+    # section: the class-balanced model trades some raw accuracy
     # (which a lazy "always predict on-time" model can already win, since
     # ~63% of shipments genuinely are on time) for far better recall on
     # the operationally important minority class (actually-late

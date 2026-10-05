@@ -60,7 +60,7 @@ class TestForecaster:
         assert preds.max() < train_max + margin
 
     def test_evaluate_reports_naive_baseline_honestly(self, demand_df):
-        """Regression test for the honest-reporting finding in README:
+        """Regression test for the baseline-reporting approach in README:
         the naive baseline MUST be computed from actual lag_1 values, not
         hardcoded or fudged, so the comparison is trustworthy.
         """

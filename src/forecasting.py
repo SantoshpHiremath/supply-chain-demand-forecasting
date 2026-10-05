@@ -3,7 +3,7 @@ Weekly part-demand forecasting.
 
 Uses scikit-learn's GradientBoostingRegressor on engineered time-series
 features (lag values, rolling means, week-of-year for seasonality) rather
-than a naive "predict the average" baseline -- and every model is honestly
+than a naive "predict the average" baseline -- and every model is
 compared against that naive baseline so any claimed improvement is
 measurable, not assumed.
 """
@@ -48,8 +48,8 @@ def train_test_split_by_time(df: pd.DataFrame, test_weeks: int = 26):
 def train_demand_forecaster(train_df: pd.DataFrame) -> GradientBoostingRegressor:
     # Deliberately small/shallow: an earlier, larger configuration
     # (n_estimators=150, max_depth=3) was found to overfit badly on
-    # ~230 rows of per-part training history -- see README's "Honest
-    # finding" section. This smaller, more regularized configuration is
+    # ~230 rows of per-part training history -- see README's "Results"
+    # section. This smaller, more regularized configuration is
     # the result of that investigation, not the original guess.
     model = GradientBoostingRegressor(
         n_estimators=50, max_depth=2, learning_rate=0.05, random_state=42,
@@ -62,8 +62,8 @@ def evaluate_forecaster(model: GradientBoostingRegressor, test_df: pd.DataFrame,
     """Evaluates the model, and -- since a pure GBR forecast was found to
     lose to the naive lag-1 baseline on most parts (see README) -- also
     reports a simple 50/50 blend of the model's prediction with the naive
-    baseline, a standard, honest model-averaging technique, not a trick.
-    `blend_with_naive=True` is the recommended, disclosed default.
+    baseline, a standard model-averaging technique.
+    `blend_with_naive=True` is the recommended default.
     """
     raw_predictions = model.predict(test_df[FEATURE_COLS])
     naive_predictions = test_df["lag_1"].values
